@@ -45,6 +45,34 @@ public class SquareMatrix {
         return result;
     }
 
+    public double Determinant() {
+        if (Size == 1) return _data[0, 0];
+        if (Size == 2) return _data[0, 0] * _data[1, 1] - _data[0, 1] * _data[1, 0];
+
+        double det = 0;
+        for (int j = 0; j < Size; j++)
+        {
+            det += (j % 2 == 0 ? 1 : -1) * _data[0, j] * Minor(0, j).Determinant();
+        }
+        return det;
+    }
+
+    private SquareMatrix Minor(int row, int col) {
+        SquareMatrix minor = new SquareMatrix(Size - 1);
+        for (int i = 0, mi = 0; i < Size; i++)
+        {
+            if (i == row) continue;
+            for (int j = 0, mj = 0; j < Size; j++)
+            {
+                if (j == col) continue;
+                minor._data[mi, mj] = _data[i, j];
+                mj++;
+            }
+            mi++;
+        }
+        return minor;
+    }
+
 }
 
 
