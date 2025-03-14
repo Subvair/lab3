@@ -73,6 +73,16 @@ public class SquareMatrix {
         return minor;
     }
 
+    public static bool operator >(SquareMatrix a, SquareMatrix b) => a.Determinant() > b.Determinant();
+    public static bool operator <(SquareMatrix a, SquareMatrix b) => a.Determinant() < b.Determinant();
+    public static bool operator >=(SquareMatrix a, SquareMatrix b) => a.Determinant() >= b.Determinant();
+    public static bool operator <=(SquareMatrix a, SquareMatrix b) => a.Determinant() <= b.Determinant();
+    public static bool operator ==(SquareMatrix a, SquareMatrix b) => a.Equals(b);
+    public static bool operator !=(SquareMatrix a, SquareMatrix b) => !a.Equals(b);
+
+    public static explicit operator double(SquareMatrix m) => m.Determinant();
+    public static implicit operator bool(SquareMatrix m) => m.Determinant() != 0;
+
 }
 
 
