@@ -104,6 +104,7 @@ public class SquareMatrix  {
     }
 
     public int CompareTo(SquareMatrix other) => Determinant().CompareTo(other.Determinant());
-    public object Clone() => new SquareMatrix(Size) { _data = (double[,])_data.Clone() };
+    
+    public SquareMatrix DeepCopy() => new SquareMatrix(Size) { _data = (double[,])_data.Clone() };
 
 }
