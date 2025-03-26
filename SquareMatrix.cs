@@ -9,6 +9,17 @@ public class SquareMatrix  {
         Size = size;
         _data = new double[size, size];
         if (randomize) FillRandom();
+        else FillManual();
+    }
+
+    private void FillManual() {
+        Console.WriteLine($"Введите элементы матрицы {Size}x{Size}:");
+        for (int i = 0; i < Size; i++) {
+            for (int j = 0; j < Size; j++) {
+                Console.Write($"[{i + 1}, {j + 1}]: ");
+                _data[i, j] = double.Parse(Console.ReadLine());
+            }
+        }
     }
 
     private void FillRandom() {
